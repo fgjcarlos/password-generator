@@ -1,28 +1,32 @@
-import {useState} from 'react';
+import {useContext, useState} from 'react';
 import './Generator.css';
-import SwitchPass from 'components/SwitchPass/SwitchPass';
+import Settings from 'components/Settings/Settings';
+import Slider from 'components/Slider/Slider';
+import GeneratorContext from 'context/generator';
+import {usePassword} from 'hooks/usePassword';
 
 const GeneratorPassword = () => {
 
-    const [password, setPasword] = useState('Click generate password')
-
-    const options = ['Upper case', 'Lower case', 'Numbers', 'Symbols']
+    const [password,setPasword, generatePassword] = usePassword()
+    const {store} = useContext(GeneratorContext)
+    
+    const handleGenerate = () => {
+        const passwordGenerate= generatePassword();
+        setPasword(passwordGenerate);
+    }
 
     return (
         <div className="generator-wrapper">
             <h1>Password Generator</h1>
             <div className="generator-result box"> {password} </div>
-            <div className="generator-slider box"></div>
-            {
-            options.map(option => 
-                <div className="generator-options box" key={option}>
-                    <span>Include {option}</span>
-                    <SwitchPass 
-                        onChange={val => console.log('valor switch', val)}
-                        name={option}/>
-            </div>)
-            } 
-            <button className="btn-generator">generate password</button>
+            <span className="generator-lbl">Length: <strong>{store.slider.value}</strong></span>
+            <Slider />
+            <span className="generator-lbl">Settings</span>
+            <Settings min={4}
+                      max={32}
+                      step={4}/>
+            <button className="btn-generator"
+                    onClick={handleGenerate}>generate password</button>
         </div>)
 }
 
