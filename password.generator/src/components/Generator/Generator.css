@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;700&display=swap');
+
+.generator-wrapper {
+    font-family: 'Ubuntu', sans-serif;
+    width: 370px;
+    /* height: 600px; */
+    border: 1px solid black;
+    border-radius: 20px;
+    background-color: rgb(9, 9, 59);
+    /* box-shadow: 10px 10px 2px #2b2a2a; */
+    color: #f5f5f5;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.generator-wrapper h1 {
+    font-size: 1.7rem;
+}
+
+.box {
+    background-color: rgb(35, 41, 77);
+    width: 90%;
+    height: 60px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    box-sizing: border-box;
+    margin: 10px 0 10px 0;
+}
+
+.generator-result {
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+}
+
+.generator-options {
+    justify-content: space-between;
+    color: #FFFF;
+    /* font-weight: bold; */
+}
+
+.btn-generator{
+    text-transform: uppercase;
+    margin: 20px 0 20px 0;
+    border: none;
+    background: linear-gradient(to right,#7431f0 , #8927a7);
+    color: #f5f5f5;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    width: 90%;
+    height: 50px;
+    padding: 7px;
+}
+
+.btn-generator:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+}
