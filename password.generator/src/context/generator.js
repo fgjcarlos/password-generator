@@ -6,7 +6,7 @@ export const GeneratorContextProvider = ({children}) => {
 
     const [store, setStore] = useState({
             slider:{
-                value: 4
+                value: 16
             },
             "Upper case": false,
             "Lower case": true,

@@ -1,4 +1,4 @@
-import {useContext, useState} from 'react';
+import {useContext} from 'react';
 import './Generator.css';
 import Settings from 'components/Settings/Settings';
 import Slider from 'components/Slider/Slider';

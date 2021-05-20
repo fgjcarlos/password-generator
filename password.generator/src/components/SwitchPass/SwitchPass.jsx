@@ -4,7 +4,7 @@ import GeneratorContext from 'context/generator';
 
 const SwitchPass = ({name}) => {
 
-    const {store, setStore} = useContext(GeneratorContext)
+    const {setStore} = useContext(GeneratorContext)
 
 
     const defaultValue = (name === 'Lower case') ? true : false;

@@ -1,36 +1,48 @@
 import { useContext, useState } from "react";
-import {options, lettersUpperCase, lettersLowerCase, numbers, symbols } from 'container/options-settings';
+import {options} from 'container/options-settings';
 import GeneratorContext from 'context/generator';
-import { randomPosition, mixPassword } from 'utils/utils';
+import { ShuffledArr } from 'utils/utils';
 
 export const usePassword = () => {
     const [password, setPasword] = useState('Click generate password')
-    const {store} = useContext(GeneratorContext)
+    const {store} = useContext(GeneratorContext)  
 
+        const activeSettings =  Object.keys(options).map(option =>
+                                    (store[option] === true) ? option : null)
+                                    .filter(item => item !== null)
 
-    const activeSettings = options.map(option =>(store[option] === true) ? option : null)
-                                   .filter(item => item !== null)
+    /*
+        - Mix password
+        - Slice length
+        - flat to string
+    */
+    const mixPassword = (arrayPassword, lenPassword) => {
 
-    const optionsPassword =
-        {
-            'Upper case' : lettersUpperCase,
-            'Lower case' : lettersLowerCase,
-            'Numbers' : numbers,
-            'Symbols' : symbols
-        }    
+       return ShuffledArr(arrayPassword)
+                .slice(0, lenPassword)
+                .join('')
+    }
+
+    /*
+        .map => for each enabled option it is mixed and truncated to the appropriate proportion
+        then => prePassword is mixed and truncated to the size of the slider value
+    */
 
     const generatePassword = () => {
 
-        let prePassword = activeSettings.map(item => optionsPassword[item])
-        .flat()
-        .join('');
-        
-        prePassword = mixPassword(prePassword).slice(0, store.slider.value)
-        
+        const lenPassword = store.slider.value
+        const lenSettings = activeSettings.length
+        const lenOptionFraction = lenPassword / lenSettings
+
+        let prePassword = activeSettings.map(item => 
+                            mixPassword(options[item], lenOptionFraction))
+                            .flat()
+                            .join('');
+    
+        prePassword = mixPassword(prePassword, lenPassword)
+
         setPasword(prePassword)
     }
     
-    console.log(password);
-
     return [password, generatePassword]
 }

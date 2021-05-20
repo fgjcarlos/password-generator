@@ -1,8 +1,7 @@
-export const randomPosition = (option) => {
-    return Math.floor(Math.random() * (option.length));
-}
-
-export const mixPassword = (password) => {
-    const mixPassword = Array.from(password).sort(() => Math.random() - 0.5 );
-    return mixPassword.join('');
+export const ShuffledArr = (arr) => {
+    return [...arr].map( (_, i, arrCopy) => {
+        var rand = i + ( Math.floor( Math.random() * (arrCopy.length - i) ) );
+        [arrCopy[rand], arrCopy[i]] = [arrCopy[i], arrCopy[rand]]
+        return arrCopy[i]
+    })
 }
