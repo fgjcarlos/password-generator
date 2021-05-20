@@ -7,12 +7,11 @@ import {usePassword} from 'hooks/usePassword';
 
 const GeneratorPassword = () => {
 
-    const [password,setPasword, generatePassword] = usePassword()
+    const [password, generatePassword] = usePassword()
     const {store} = useContext(GeneratorContext)
     
     const handleGenerate = () => {
-        const passwordGenerate= generatePassword();
-        setPasword(passwordGenerate);
+         generatePassword();
     }
 
     return (

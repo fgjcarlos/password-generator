@@ -1,17 +1,25 @@
-import {useState} from 'react';
+import {useContext, useState} from 'react';
 import './SwitchPass.css'
+import GeneratorContext from 'context/generator';
 
-const SwitchPass = ({onChange, name}) => {
+const SwitchPass = ({name}) => {
 
-    console.log('name :>> ', name);
+    const {store, setStore} = useContext(GeneratorContext)
+
 
     const defaultValue = (name === 'Lower case') ? true : false;
     const [active, setActive] = useState(defaultValue);
 
+    const handleActive = () => {
+        setActive(!active)
+        setStore(prev => ({...prev, [name]: !active}) );
+    }
+
     return (
     <>
         <label className="switch">
-            <input type="checkbox" checked={active} onChange={value => setActive(value && !active)}/>
+            <input type="checkbox" checked={active} 
+                   onChange={value => value && handleActive()}/>
             <span className="slider round"></span>
         </label>
     </>)
