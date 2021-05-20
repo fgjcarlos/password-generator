@@ -1,8 +1,20 @@
 .App {
   width: 100vw;
-  height: 100vh;
+  min-height: 100vh;
+  padding-top: 30px;
+  padding-bottom: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: rgb(49, 158, 247);
+  box-sizing: border-box;
+}
+
+
+
+@media screen and (max-width: 550px)  {
+  .App {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
 }

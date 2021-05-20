@@ -3,11 +3,9 @@
 .generator-wrapper {
     font-family: 'Ubuntu', sans-serif;
     width: 370px;
-    /* height: 600px; */
     border: 1px solid black;
     border-radius: 20px;
     background-color: rgb(9, 9, 59);
-    /* box-shadow: 10px 10px 2px #2b2a2a; */
     color: #f5f5f5;
     text-align: center;
     display: flex;
@@ -59,19 +57,32 @@
 }
 
 .generator-result {
+    position: relative;
     justify-content: center;
     align-items: center;
     height: 70px;
 }
 
+.generator-result span {
+    position: absolute;
+    right: 10px;
+    bottom: 5px;
+    color: #888;
+    font-size: small;
+}
+
+.generator-result:hover{
+    cursor: url('../../media/icons/copy32.png'), pointer;
+    background-color: rgb(92, 99, 143);
+
+}
+
 .generator-options {
     justify-content: space-between;
     color: #FFFF;
-    /* font-weight: bold; */
 }
 
 .generator-lbl{
-    /* position: absolute; */
     font-size: 0.65rem;
     text-transform: uppercase;
     align-self: start;
@@ -102,3 +113,9 @@
     cursor: pointer;
     transform: scale(1.05);
 }
+
+    @media screen and (max-width: 550px)  {
+        .generator-wrapper {
+            transform: scale(0.8);
+        }
+    }
