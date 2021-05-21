@@ -7,13 +7,14 @@ import {usePassword} from 'hooks/usePassword';
 
 const GeneratorPassword = () => {
 
+    const defaultCopyText = 'Click to copy'
     const [password, generatePassword] = usePassword()
     const {store} = useContext(GeneratorContext)
-    const [copy, setCopy] = useState('Click to copy')
+    const [copy, setCopy] = useState(defaultCopyText)
     
     const handleGenerate = () => {
          generatePassword()
-         setCopy('Click to copy')
+         setCopy(defaultCopyText)
     }
 
     const handleCopyPassword = (e) =>{
@@ -26,7 +27,7 @@ const GeneratorPassword = () => {
         <div className="generator-wrapper">
             <h1>Password Generator</h1>
             <div className="generator-result box"
-                onClick={e => handleCopyPassword(e)}> 
+                onClick={e => password && handleCopyPassword(e)}> 
                    <p>{password}</p>
                     <span>{copy}</span>
             </div>

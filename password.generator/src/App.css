@@ -10,8 +10,6 @@
   box-sizing: border-box;
 }
 
-
-
 @media screen and (max-width: 550px)  {
   .App {
     padding-top: 20px;
